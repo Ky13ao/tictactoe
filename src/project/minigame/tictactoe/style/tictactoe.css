@@ -1,17 +1,17 @@
-#game-container{
-  display: inline-flex;
-  flex-direction: row;
+#game-container {
+  display: flex;
 }
 #game-board {
-  height: var(--screen-size);
-  width: var(--screen-size);
-  margin: 2vmin auto;
+  height: var(--board-size);
+  width: var(--board-size);
+  margin: calc(var(--board-size) / 40) auto;
 }
 #board {
-  border: 4vmin solid lightsalmon;
-  background-color: lightsalmon;
-  border-radius: 5vmin;
-  height: 75vmin;
+  margin: auto 0;
+  border: calc(var(--board-size) / 20) solid var(--kb-main-color);
+  background-color: var(--kb-main-color);
+  border-radius: calc(var(--board-size) / 16);
+  height: var(--board-size);
   display: grid;
   grid-template-rows: calc(100%/3) calc(100%/3) calc(100%/3);
 }
@@ -24,78 +24,42 @@
   width: 100%;
   height: 100%;
   line-height: 0;
-  border-radius: 3vmin;
+  border-radius: calc(var(--board-size) / 27);
   padding: 0;
-  font-size: 20vmin;
-  border: 1vmin solid lightsalmon;
-  background-color: aquamarine;
+  font-size: calc(var(--board-size) / 4);
+  border: 1vmin solid var(--kb-main-color);
+  background-color: var(--kb-main-color-5);
+  color: var(--kb-main-color);
 }
-.square:focus, summary:focus {
+.square:focus, summary:focus, #botplay-checkbox:focus, #util > * {
   outline: none;
 }
 .square:hover, .moves:hover{
   cursor: pointer;
-  border-radius: 2vmin;
+  border-radius: calc(var(--board-size) / 40);
 }
-#util, #status  {
-  background-color: aquamarine;
-  box-shadow: 0 0 0 4vmin lightsalmon;
-  text-align: center;
+#botplay-checkbox + .slider::before{
+  content: "🤝";
 }
-#status {
-  margin: 5vmin;
-  border-radius: 2vmin;
-  font-size: 10vmin;
-  height: 12vmin;
+#botplay-checkbox:checked + .slider::before{
+  content: "🤖";
 }
-#util{
-  width: 20vmin;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  margin: unset;
+#util {
+  display: flex;
+}
+#util button {
+  border: 0;
+  background: var(--kb-main-color-5);
+  height: 34px;
+  width: max-content;
+  border-radius: 34px;
+  transition:.1s;
+}
+#util button:hover {
+  background: var(--kb-main-color);
 }
 @media screen and ( max-width: 815px) {
-  #game-container{
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-  }
-  #util {
-    top: unset;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: unset;
-    height: fit-content;
-  }
 }
-#history {
-  justify-content: center;
-  padding: 5vmin 0;
-  width: 80%;
-  margin: auto;
-  list-style-type: none;
-}
-.moves {
-  border: 1vmin solid lightsalmon;
-  background-color: lightsalmon;
-  border-radius: 5vmin;
-  margin-bottom: 1vmin;
-  padding: 1vmin;
-  font-size:large;
-  content: counter(list-item);
-}
+
 @media screen and (max-height: 150vmin) {
-  .moves {
-    width: max-content;
-    float: left;
-  }
-}
-summary, dd{
-  cursor: pointer;
-}
-#util > button, #util > select {
-  
 }

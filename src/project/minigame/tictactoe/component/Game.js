@@ -35,15 +35,15 @@ export default function TicTacToeGame (props) {
       isXNext: !state.isXNext,
     });
   }
-  function jumpTo(step){
+  function jumpTo(step = state.history.length-3){
     setState({
       history: state.history,
       stepNumber: step,
       isXNext: (step % 2) === 0
     });
   }
-  function handleChange(element){
-    const option = parseInt(element.target.value)===1;
+  function handleToggleBotPlay(element){
+    const option = !element.target.checked;
     if(option === isPVP) return;
     setPVP(option);
     jumpTo(0);
@@ -52,21 +52,7 @@ export default function TicTacToeGame (props) {
   const current = history[state.stepNumber];
   const winner = getWinner(current.squares);
   const status = winner ? 'Winner: ' + winner : 'Next player : ' + (state.isXNext ? 'X' : 'O');
-  const moves = history.map((_, move) => {
-      const label = (move === 0) ? '↪' : '🔙#' + move + '.';
-      return <li className="moves" key={move} onClick={() => jumpTo(move)}>{label}</li>});
   return <div id="game-container">
-    <Board squares={current.squares} status={status} onClick={handleClick}/>
-    <div id="util">
-      <button onClick={() => jumpTo(0)}>Restart</button>
-      <select onChange={handleChange}>
-        <option value="0">Player vs Bot</option>
-        <option value="1">Player vs Player</option>
-      </select>
-      <details id="game-history">
-        <summary>History:</summary>
-        <ul id="history">{moves}</ul>
-      </details>
-    </div>
+    <Board squares={current.squares} status={status} onClick={handleClick} onRestart={() => jumpTo(0)} onBack={() => jumpTo()} toggleBotPlay={handleToggleBotPlay}/>
   </div>
 }

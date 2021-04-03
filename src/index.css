@@ -1,24 +1,74 @@
 :root {
-  --screen-size: calc(95vmin);
-  --kb-main-background-color: rgb(197, 90, 17);
-  --kb-main-color-0: rgb(237, 125, 49); /* https://www.htmlcsscolor.com/hex/ED7D31 */
+  --board-size: calc(80vmin);
+  --kb-border-color: rgb(197, 90, 17);
+  --kb-text-color: ;
+  --kb-main-color: rgb(237, 125, 49); /* https://www.htmlcsscolor.com/hex/ED7D31 */
   /* Shades of West Side #ED7D31*/
-  --kb-main-color-d1: #be6427;
-  --kb-main-color-d2: #98501F;
-  --kb-main-color-d3: #7A4019;
-  --kb-main-color-d4: #623314;
-  --kb-main-color-d5: #4E2910;
-  --kb-main-color-d6: #3e210D;
-  --kb-main-color-d7: #321A0A;
-  --kb-main-color-d8: #281508;
-  --kb-main-color-d9: #201106;
+  --kb-main-color-1: #be6427;
+  --kb-main-color-2: #98501F;
+  --kb-main-color-3: #7A4019;
+  --kb-main-color-4: #623314;
+  --kb-main-color-5: #4E2910;
+  --kb-main-color-6: #3e210D;
+  --kb-main-color-7: #321A0A;
+  --kb-main-color-8: #281508;
+  --kb-main-color-9: #201106;
 }
 * {
   box-sizing: border-box;
+  color:var(--kb-border-color);
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
   margin: 0;
-  background-color: brown;
+  background-color: var(--kb-main-color-8);
+}
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--kb-main-color-5);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  text-align: center;
+  font-size: larger;
+  height: 30px;
+  width: 30px;
+  left: 2px;
+  bottom: 2px;
+  background: var(--kb-main-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider{
+  background-color: var(--kb-main-color);
+}
+input:checked + .slider::before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: var(--kb-border-color);
+}
+summary, dd, input, .toggle{
+  cursor: pointer;
 }

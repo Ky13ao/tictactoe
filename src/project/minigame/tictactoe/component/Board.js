@@ -5,7 +5,14 @@ export default function Board (props) {
     return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />
   }
   return <div id="game-board">
-    <h2 id="status">{props.status}</h2>
+    <div id="util">
+      <button onClick={props.onRestart} id="restart-button">Restart</button>
+      <button onClick={props.onBack} id="back-button">Back</button>
+      <label class="toggle">
+        <input type="checkbox" onChange={props.toggleBotPlay} defaultChecked id="botplay-checkbox"/>
+        <span class="slider"></span>
+      </label>
+    </div>
     <div id="board">
       <div className="board-row">
         {renderSquare(0)}
@@ -23,5 +30,6 @@ export default function Board (props) {
         {renderSquare(8)}
       </div>
     </div>
+    <h2 id="status">{props.status}</h2>
   </div>
 }
