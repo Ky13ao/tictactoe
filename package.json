@@ -40,5 +40,16 @@
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://ky13ao:BaoTuyen!5617!@github.com/ky13ao/ky13ao.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ky13ao/ky13ao.github.io/issues"
   }
 }
