@@ -1,0 +1,101 @@
+#game-container{
+  display: inline-flex;
+  flex-direction: row;
+}
+#game-board {
+  height: var(--screen-size);
+  width: var(--screen-size);
+  margin: 2vmin auto;
+}
+#board {
+  border: 4vmin solid lightsalmon;
+  background-color: lightsalmon;
+  border-radius: 5vmin;
+  height: 75vmin;
+  display: grid;
+  grid-template-rows: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+.board-row {
+  display: grid;
+  grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+  line-height: 0;
+}
+.square {
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+  border-radius: 3vmin;
+  padding: 0;
+  font-size: 20vmin;
+  border: 1vmin solid lightsalmon;
+  background-color: aquamarine;
+}
+.square:focus, summary:focus {
+  outline: none;
+}
+.square:hover, .moves:hover{
+  cursor: pointer;
+  border-radius: 2vmin;
+}
+#util, #status  {
+  background-color: aquamarine;
+  box-shadow: 0 0 0 4vmin lightsalmon;
+  text-align: center;
+}
+#status {
+  margin: 5vmin;
+  border-radius: 2vmin;
+  font-size: 10vmin;
+  height: 12vmin;
+}
+#util{
+  width: 20vmin;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: unset;
+}
+@media screen and ( max-width: 815px) {
+  #game-container{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  #util {
+    top: unset;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: unset;
+    height: fit-content;
+  }
+}
+#history {
+  justify-content: center;
+  padding: 5vmin 0;
+  width: 80%;
+  margin: auto;
+  list-style-type: none;
+}
+.moves {
+  border: 1vmin solid lightsalmon;
+  background-color: lightsalmon;
+  border-radius: 5vmin;
+  margin-bottom: 1vmin;
+  padding: 1vmin;
+  font-size:large;
+  content: counter(list-item);
+}
+@media screen and (max-height: 150vmin) {
+  .moves {
+    width: max-content;
+    float: left;
+  }
+}
+summary, dd{
+  cursor: pointer;
+}
+#util > button, #util > select {
+  
+}
