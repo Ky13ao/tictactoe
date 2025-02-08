@@ -52,7 +52,5 @@ export default function TicTacToeGame (props) {
   const current = history[state.stepNumber];
   const winner = getWinner(current.squares);
   const status = winner ? 'Winner: ' + winner : 'Next player : ' + (state.isXNext ? 'X' : 'O');
-  return <div id="game-container">
-    <Board squares={current.squares} status={status} onClick={handleClick} onRestart={() => jumpTo(0)} onBack={() => jumpTo()} toggleBotPlay={handleToggleBotPlay}/>
-  </div>
+  return <div id="game-container"><Board squares={current.squares} status={status} onClick={handleClick} onRestart={() => jumpTo(0)} onBack={() => jumpTo()} toggleBotPlay={handleToggleBotPlay}/></div>;
 }

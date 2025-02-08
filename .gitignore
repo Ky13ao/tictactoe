@@ -2,10 +2,11 @@
 
 # dependencies
 /.vscode
-/node_modules
+/.vs
+**/node_modules
 /.pnp
 .pnp.js
-package-lock.json
+**/package-lock.json
 
 # testing
 /coverage
